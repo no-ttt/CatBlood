@@ -16,10 +16,16 @@ const BloodTypeInfo: React.FC<BloodTypeInfoProps> = ({ type, description, compat
     rare: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400',
   };
 
+  const rarityText = {
+    common: '常見',
+    uncommon: '較少見',
+    rare: '罕見',
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative h-48">
-        <img src={image} alt={`Cat with ${type} blood type`} className="w-full h-full object-cover" />
+        <img src={image} alt={`${type}血型的貓咪`} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       </div>
       <div className="p-6">
@@ -29,14 +35,14 @@ const BloodTypeInfo: React.FC<BloodTypeInfoProps> = ({ type, description, compat
             <h3 className="text-xl font-bold text-gray-900 dark:text-white">{type}</h3>
           </div>
           <span className={`text-xs px-2 py-1 rounded-full ${rarityColor[rarity]}`}>
-            {rarity.charAt(0).toUpperCase() + rarity.slice(1)}
+            {rarityText[rarity]}
           </span>
         </div>
         
         <p className="text-gray-700 dark:text-gray-300 mb-4">{description}</p>
         
         <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-          <h4 className="font-medium text-gray-900 dark:text-white mb-2">Compatible with:</h4>
+          <h4 className="font-medium text-gray-900 dark:text-white mb-2">相容血型：</h4>
           <div className="flex flex-wrap gap-2">
             {compatibility.map((bloodType, index) => (
               <span 
@@ -58,34 +64,34 @@ const InfoSection: React.FC = () => {
     <section className="py-20 bg-white dark:bg-gray-900" id="info">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Understanding Cat Blood Types</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">了解貓咪血型</h2>
           <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
-            Just like humans, cats have different blood types that determine compatibility for transfusions.
-            Learn about the most common feline blood types and why donation is so important.
+            就像人類一樣，貓咪也有不同的血型，這決定了輸血的相容性。
+            了解最常見的貓咪血型以及為什麼捐血如此重要。
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <BloodTypeInfo 
-            type="Type A" 
-            description="The most common blood type found in domestic cats worldwide. Cats with type A blood have strong anti-B antibodies."
-            compatibility={["Type A"]}
+            type="A型" 
+            description="全世界家貓中最常見的血型。A型血的貓咪具有強烈的抗B抗體。"
+            compatibility={["A型"]}
             rarity="common"
             image="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg"
           />
           
           <BloodTypeInfo 
-            type="Type B" 
-            description="Less common than Type A, but prevalent in certain breeds. Cats with type B have very strong anti-A antibodies."
-            compatibility={["Type B"]}
+            type="B型" 
+            description="比A型較少見，但在某些品種中很普遍。B型血的貓咪具有非常強烈的抗A抗體。"
+            compatibility={["B型"]}
             rarity="uncommon"
             image="https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg"
           />
           
           <BloodTypeInfo 
-            type="Type AB" 
-            description="The rarest blood type, found in less than 1% of cats. These cats have no antibodies against other blood types."
-            compatibility={["Type A", "Type B", "Type AB"]}
+            type="AB型" 
+            description="最罕見的血型，在不到1%的貓咪中發現。這些貓咪對其他血型沒有抗體。"
+            compatibility={["A型", "B型", "AB型"]}
             rarity="rare"
             image="https://images.pexels.com/photos/2071873/pexels-photo-2071873.jpeg"
           />
@@ -95,24 +101,24 @@ const InfoSection: React.FC = () => {
           <div className="relative rounded-lg overflow-hidden">
             <img 
               src="https://images.pexels.com/photos/7725961/pexels-photo-7725961.jpeg"
-              alt="Cat receiving medical care"
+              alt="接受醫療照護的貓咪"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70 p-8 flex items-center">
               <div className="text-white">
-                <h3 className="text-2xl font-bold mb-4">Why Feline Blood Donation Matters</h3>
+                <h3 className="text-2xl font-bold mb-4">為什麼貓咪捐血很重要</h3>
                 <div className="space-y-4">
                   <div className="flex items-start">
                     <CheckCircle size={24} className="text-red-500 mr-4 flex-shrink-0 mt-1" />
-                    <p>Blood transfusions save cats in trauma, surgery, and severe anemia cases</p>
+                    <p>輸血可以拯救外傷、手術和嚴重貧血的貓咪</p>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle size={24} className="text-red-500 mr-4 flex-shrink-0 mt-1" />
-                    <p>One donation can help multiple cats in need</p>
+                    <p>一次捐血可以幫助多隻需要的貓咪</p>
                   </div>
                   <div className="flex items-start">
                     <CheckCircle size={24} className="text-red-500 mr-4 flex-shrink-0 mt-1" />
-                    <p>Critical shortage of feline blood products nationwide</p>
+                    <p>全國貓咪血液製品嚴重短缺</p>
                   </div>
                 </div>
               </div>
@@ -120,14 +126,14 @@ const InfoSection: React.FC = () => {
           </div>
 
           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Critical Information</h3>
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">重要資訊</h3>
             <div className="space-y-6">
               <div className="flex items-start">
                 <AlertCircle size={24} className="text-red-600 dark:text-red-500 mr-4 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Blood Type Compatibility</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">血型相容性</h4>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Matching blood types is crucial. Transfusion reactions can be severe or fatal with mismatched types.
+                    血型匹配至關重要。不匹配的血型可能導致嚴重或致命的輸血反應。
                   </p>
                 </div>
               </div>
@@ -135,9 +141,9 @@ const InfoSection: React.FC = () => {
               <div className="flex items-start">
                 <AlertCircle size={24} className="text-red-600 dark:text-red-500 mr-4 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Storage Limitations</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">儲存限制</h4>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Feline blood products have a limited shelf life, making regular donations essential.
+                    貓咪血液製品的保存期限有限，因此定期捐血至關重要。
                   </p>
                 </div>
               </div>
@@ -145,9 +151,9 @@ const InfoSection: React.FC = () => {
               <div className="flex items-start">
                 <AlertCircle size={24} className="text-red-600 dark:text-red-500 mr-4 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Emergency Needs</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">緊急需求</h4>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Emergency situations require immediate access to compatible blood products.
+                    緊急情況需要立即獲得相容的血液製品。
                   </p>
                 </div>
               </div>

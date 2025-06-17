@@ -23,8 +23,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </span>
             </div>
             <p className="text-gray-400 mb-6">
-              Dedicated to saving feline lives through blood donation. 
-              Our mission is to ensure every cat in need has access to life-saving blood products.
+              致力於透過捐血拯救貓咪生命。
+              我們的使命是確保每隻需要幫助的貓咪都能獲得救命的血液製品。
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-red-500 transition-colors" aria-label="Facebook">
@@ -43,55 +43,55 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">快速連結</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" onClick={(e) => handleNavigation('home', e)} className="text-gray-400 hover:text-red-500 transition-colors">Home</a>
+                <a href="#" onClick={(e) => handleNavigation('home', e)} className="text-gray-400 hover:text-red-500 transition-colors">首頁</a>
               </li>
               <li>
-                <a href="#" onClick={(e) => handleNavigation('about', e)} className="text-gray-400 hover:text-red-500 transition-colors">About Us</a>
+                <a href="#" onClick={(e) => handleNavigation('about', e)} className="text-gray-400 hover:text-red-500 transition-colors">關於我們</a>
               </li>
               <li>
-                <a href="#" onClick={(e) => handleNavigation('donate', e)} className="text-gray-400 hover:text-red-500 transition-colors">Donate Blood</a>
+                <a href="#" onClick={(e) => handleNavigation('donate', e)} className="text-gray-400 hover:text-red-500 transition-colors">捐血資訊</a>
               </li>
               <li>
-                <a href="#" onClick={(e) => handleNavigation('locations', e)} className="text-gray-400 hover:text-red-500 transition-colors">Find Locations</a>
+                <a href="#" onClick={(e) => handleNavigation('locations', e)} className="text-gray-400 hover:text-red-500 transition-colors">據點查詢</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Emergency Requests</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">緊急申請</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">FAQs</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">常見問題</a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4">資源</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Donor Eligibility</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">供血貓資格</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Donation Process</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">捐血流程</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Cat Blood Types</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">貓咪血型</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Success Stories</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">成功案例</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Research & Publications</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">研究與出版</a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">Veterinary Partners</a>
+                <a href="#" className="text-gray-400 hover:text-red-500 transition-colors">獸醫合作夥伴</a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-4">聯絡我們</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail size={20} className="text-red-500 mr-3 mt-1 flex-shrink-0" />
@@ -99,14 +99,14 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </li>
               <li className="flex items-start">
                 <Phone size={20} className="text-red-500 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">(800) 555-CATS</span>
+                <span className="text-gray-400">(02) 555-CATS</span>
               </li>
               <li>
                 <button 
                   onClick={() => onNavigate('contact')}
                   className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 rounded-lg transition-colors"
                 >
-                  Contact Form
+                  聯絡表單
                 </button>
               </li>
             </ul>
@@ -114,11 +114,11 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         
         <div className="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-          <p className="mb-2">© {new Date().getFullYear()} CatBlood Organization. All rights reserved.</p>
+          <p className="mb-2">© {new Date().getFullYear()} CatBlood 組織。版權所有。</p>
           <div className="flex justify-center space-x-4">
-            <a href="#" className="hover:text-red-500 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-red-500 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-red-500 transition-colors">Cookie Policy</a>
+            <a href="#" className="hover:text-red-500 transition-colors">隱私政策</a>
+            <a href="#" className="hover:text-red-500 transition-colors">服務條款</a>
+            <a href="#" className="hover:text-red-500 transition-colors">Cookie 政策</a>
           </div>
         </div>
       </div>

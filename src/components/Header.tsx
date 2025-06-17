@@ -62,43 +62,31 @@ const Header: React.FC<HeaderProps> = ({
           <nav className="hidden md:flex space-x-8">
             <Link 
               href="#" 
-              label="Home" 
+              label="首頁" 
               active={currentPage === 'home'}
               onClick={() => handleNavigation('home')} 
             />
             <Link 
               href="#" 
-              label="About" 
+              label="關於我們" 
               active={currentPage === 'about'}
               onClick={() => handleNavigation('about')} 
             />
             <Link 
               href="#" 
-              label="Donate" 
+              label="捐血資訊" 
               active={currentPage === 'donate'}
               onClick={() => handleNavigation('donate')} 
             />
-            {/* <Link 
-              href="#" 
-              label="Pet Registration" 
-              active={currentPage === 'pet-registration'}
-              onClick={() => handleNavigation('pet-registration')} 
-            />
             <Link 
               href="#" 
-              label="Vet Registration" 
-              active={currentPage === 'vet-registration'}
-              onClick={() => handleNavigation('vet-registration')} 
-            /> */}
-            <Link 
-              href="#" 
-              label="Locations" 
+              label="據點查詢" 
               active={currentPage === 'locations'}
               onClick={() => handleNavigation('locations')} 
             />
             <Link 
               href="#" 
-              label="Contact" 
+              label="聯絡我們" 
               active={currentPage === 'contact'}
               onClick={() => handleNavigation('contact')} 
             />
@@ -108,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({
             <button 
               onClick={toggleDarkMode}
               className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              aria-label="Toggle dark mode"
+              aria-label="切換深色模式"
             >
               {darkMode ? (
                 <Sun size={20} className="text-yellow-400" />
@@ -137,7 +125,7 @@ const Header: React.FC<HeaderProps> = ({
                       }}
                       className="w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      Member Center
+                      會員中心
                     </button>
                     <button
                       onClick={() => {
@@ -147,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({
                       className="w-full text-left px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center"
                     >
                       <LogOut size={16} className="mr-2" />
-                      Logout
+                      登出
                     </button>
                   </div>
                 )}
@@ -157,7 +145,7 @@ const Header: React.FC<HeaderProps> = ({
                 onClick={() => handleNavigation('login')}
                 className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors"
               >
-                Login
+                登入
               </button>
             )}
 
@@ -181,49 +169,35 @@ const Header: React.FC<HeaderProps> = ({
         <div className="container mx-auto px-4 flex flex-col space-y-4 pb-4">
           <Link 
             href="#" 
-            label="Home" 
+            label="首頁" 
             mobile 
             active={currentPage === 'home'}
             onClick={() => handleNavigation('home')} 
           />
           <Link 
             href="#" 
-            label="About" 
+            label="關於我們" 
             mobile 
             active={currentPage === 'about'}
             onClick={() => handleNavigation('about')} 
           />
           <Link 
             href="#" 
-            label="Donate" 
+            label="捐血資訊" 
             mobile 
             active={currentPage === 'donate'}
             onClick={() => handleNavigation('donate')} 
           />
-          {/* <Link 
-            href="#" 
-            label="Pet Registration" 
-            mobile 
-            active={currentPage === 'pet-registration'}
-            onClick={() => handleNavigation('pet-registration')} 
-          />
           <Link 
             href="#" 
-            label="Vet Registration" 
-            mobile 
-            active={currentPage === 'vet-registration'}
-            onClick={() => handleNavigation('vet-registration')} 
-          /> */}
-          <Link 
-            href="#" 
-            label="Locations" 
+            label="據點查詢" 
             mobile 
             active={currentPage === 'locations'}
             onClick={() => handleNavigation('locations')} 
           />
           <Link 
             href="#" 
-            label="Contact Us" 
+            label="聯絡我們" 
             mobile 
             active={currentPage === 'contact'}
             onClick={() => handleNavigation('contact')} 

@@ -9,9 +9,9 @@ const Locations: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1521306/pexels-photo-1521306.jpeg')] bg-cover bg-center opacity-25"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Find a Donation Location</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">尋找捐血據點</h1>
             <p className="text-xl mb-8">
-              Locate your nearest cat blood donation center and help save lives in your community.
+              找到您附近的貓咪捐血中心，在您的社區中幫助拯救生命。
             </p>
           </div>
         </div>

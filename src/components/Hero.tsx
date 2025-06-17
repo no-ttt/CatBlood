@@ -18,41 +18,41 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 mb-12 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Save a Cat's Life: <span className="text-red-600 dark:text-red-500">Donate Blood</span>
+              拯救貓咪生命：<span className="text-red-600 dark:text-red-500">捐血救命</span>
             </h1>
             
             <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-              Your cat could be a hero. Just like humans, cats need blood donations too. 
-              Join our community of cat donors and help save feline lives.
+              您的愛貓可以成為英雄。就像人類一樣，貓咪也需要血液捐贈。
+              加入我們的貓咪捐血社群，幫助拯救貓咪生命。
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
-              <CTAButton primary onClick={() => onNavigate('pet-registration')}>Register Your Cat</CTAButton>
-              <CTAButton onClick={() => onNavigate('about')}>Learn More</CTAButton>
+              <CTAButton primary onClick={() => onNavigate('pet-registration')}>註冊您的愛貓</CTAButton>
+              <CTAButton onClick={() => onNavigate('about')}>了解更多</CTAButton>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-lg flex items-center">
                 <Heart size={24} className="text-red-600 dark:text-red-500 mr-3 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Safe Process</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Painless, supervised donation</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">安全流程</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">無痛、專業監督捐血</p>
                 </div>
               </div>
               
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-lg flex items-center">
                 <Clock size={24} className="text-red-600 dark:text-red-500 mr-3 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Quick &amp; Easy</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Only takes 30-45 minutes</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">快速便利</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">僅需30-45分鐘</p>
                 </div>
               </div>
               
               <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm p-6 rounded-lg shadow-lg flex items-center">
                 <MapPin size={24} className="text-red-600 dark:text-red-500 mr-3 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Multiple Locations</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Find a center near you</p>
+                  <h3 className="font-semibold text-gray-900 dark:text-white">多個據點</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">就近找到捐血中心</p>
                 </div>
               </div>
             </div>
@@ -65,12 +65,12 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <div className="relative">
                 <img 
                   src="https://images.pexels.com/photos/6235233/pexels-photo-6235233.jpeg" 
-                  alt="Cat at veterinary clinic"
+                  alt="獸醫診所的貓咪"
                   className="rounded-2xl shadow-2xl w-full h-[500px] object-cover object-center"
                 />
                 <div className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
                   <div className="text-3xl font-bold text-red-600 dark:text-red-500 mb-1">5000+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Lives Saved</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">拯救生命</div>
                 </div>
               </div>
             </div>

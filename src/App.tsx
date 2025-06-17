@@ -23,6 +23,7 @@ export interface User {
   idNumber?: string;
   hospitalName?: string;
   isLoggedIn: boolean;
+  isPaid?: boolean; // 新增付費狀態
 }
 
 export interface Pet {
@@ -35,6 +36,29 @@ export interface Pet {
   lastCheckup: string;
   isDonor: boolean;
   ownerId: string;
+  breed?: string;
+  weight?: number;
+  gender?: string;
+}
+
+export interface HealthReport {
+  id: string;
+  petId: string;
+  date: string;
+  type: string;
+  status: string;
+  details: string;
+  downloadUrl?: string;
+}
+
+export interface DNAReport {
+  id: string;
+  petId: string;
+  date: string;
+  bloodType: string;
+  geneticMarkers: string[];
+  healthRisks: string[];
+  downloadUrl?: string;
 }
 
 export interface BloodRequestData {
