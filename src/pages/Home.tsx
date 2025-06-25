@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ onNavigate }) => {
       <InfoSection />
       <DonationProcess />
       <LocationMap />
-      <EmergencySection />
+      <EmergencySection onNavigate={onNavigate} />
       <FAQ />
     </main>
   );

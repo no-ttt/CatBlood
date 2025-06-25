@@ -54,7 +54,7 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
 
   const handleSubmit = () => {
     // Handle form submission
-    alert('Registration successful! We will contact you soon to arrange a health check.');
+    alert('註冊成功！我們將盡快聯絡您安排健康檢查。');
     onNavigate('login');
   };
 
@@ -86,8 +86,8 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
   const renderStep1 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Choose Registration Type</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please select your registration purpose</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">選擇註冊類型</h2>
+        <p className="text-gray-600 dark:text-gray-400">請選擇您的註冊目的</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -101,10 +101,10 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
         >
           <User size={32} className="text-red-600 dark:text-red-500 mb-4" />
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-            Blood Testing for My Pet
+            為我的愛貓進行血型檢測
           </h3>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Create a blood type profile so your pet can receive blood immediately when needed in the future
+            建立血型檔案，讓您的愛貓在未來需要時能立即獲得血液
           </p>
         </div>
 
@@ -118,10 +118,10 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
         >
           <Heart size={32} className="text-red-600 dark:text-red-500 mb-4" />
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-            Blood Donation to Help Other Pets
+            捐血幫助其他寵物
           </h3>
           <p className="text-gray-600 dark:text-gray-400 text-sm">
-            Let your pet become a hero and help save other pets in need of blood transfusions
+            讓您的愛貓成為英雄，幫助拯救需要輸血的其他貓咪
           </p>
         </div>
       </div>
@@ -131,28 +131,28 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
   const renderStep2 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Pet Information</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please fill in your pet's basic information</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">寵物資訊</h2>
+        <p className="text-gray-600 dark:text-gray-400">請填寫您愛貓的基本資訊</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Pet Name *
+            寵物姓名 *
           </label>
           <input
             type="text"
             value={formData.petName}
             onChange={(e) => handleInputChange('petName', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your pet's name"
+            placeholder="請輸入寵物姓名"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Date of Birth *
+            出生日期 *
           </label>
           <input
             type="date"
@@ -165,14 +165,14 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
 
         <div className="md:col-span-2">
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Microchip Number *
+            晶片號碼 *
           </label>
           <input
             type="text"
             value={formData.chipNumber}
             onChange={(e) => handleInputChange('chipNumber', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter 15-digit microchip number"
+            placeholder="請輸入15位數晶片號碼"
             required
           />
         </div>
@@ -183,77 +183,77 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
   const renderStep3 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Owner Information</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please fill in your contact information</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">飼主資訊</h2>
+        <p className="text-gray-600 dark:text-gray-400">請填寫您的聯絡資訊</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Owner Name *
+            飼主姓名 *
           </label>
           <input
             type="text"
             value={formData.ownerName}
             onChange={(e) => handleInputChange('ownerName', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your name"
+            placeholder="請輸入您的姓名"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            ID Number *
+            身分證字號 *
           </label>
           <input
             type="text"
             value={formData.ownerIdNumber}
             onChange={(e) => handleInputChange('ownerIdNumber', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your ID number"
+            placeholder="請輸入身分證字號"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Phone Number *
+            聯絡電話 *
           </label>
           <input
             type="tel"
             value={formData.ownerPhone}
             onChange={(e) => handleInputChange('ownerPhone', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your phone number"
+            placeholder="請輸入聯絡電話"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Email *
+            電子信箱 *
           </label>
           <input
             type="email"
             value={formData.ownerEmail}
             onChange={(e) => handleInputChange('ownerEmail', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your email"
+            placeholder="請輸入電子信箱"
             required
           />
         </div>
 
         <div className="md:col-span-2">
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Contact Address *
+            聯絡地址 *
           </label>
           <input
             type="text"
             value={formData.ownerAddress}
             onChange={(e) => handleInputChange('ownerAddress', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter your complete address"
+            placeholder="請輸入完整地址"
             required
           />
         </div>
@@ -264,30 +264,30 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
   const renderStep4 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Confirmation & Payment</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please confirm your information and complete payment</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">確認與付費</h2>
+        <p className="text-gray-600 dark:text-gray-400">請確認您的資訊並完成付費</p>
       </div>
 
       {/* Data Confirmation */}
       <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Registration Information Confirmation</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">註冊資訊確認</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
-            <span className="text-gray-600 dark:text-gray-400">Registration Type:</span>
+            <span className="text-gray-600 dark:text-gray-400">註冊類型：</span>
             <span className="text-gray-900 dark:text-white ml-2">
-              {formData.registrationType === 'self' ? 'Blood Testing for My Pet' : 'Blood Donation to Help Other Pets'}
+              {formData.registrationType === 'self' ? '為我的愛貓進行血型檢測' : '捐血幫助其他寵物'}
             </span>
           </div>
           <div>
-            <span className="text-gray-600 dark:text-gray-400">Pet Name:</span>
+            <span className="text-gray-600 dark:text-gray-400">寵物姓名：</span>
             <span className="text-gray-900 dark:text-white ml-2">{formData.petName}</span>
           </div>
           <div>
-            <span className="text-gray-600 dark:text-gray-400">Owner Name:</span>
+            <span className="text-gray-600 dark:text-gray-400">飼主姓名：</span>
             <span className="text-gray-900 dark:text-white ml-2">{formData.ownerName}</span>
           </div>
           <div>
-            <span className="text-gray-600 dark:text-gray-400">Contact Phone:</span>
+            <span className="text-gray-600 dark:text-gray-400">聯絡電話：</span>
             <span className="text-gray-900 dark:text-white ml-2">{formData.ownerPhone}</span>
           </div>
         </div>
@@ -295,19 +295,19 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
 
       {/* Fee Explanation */}
       <div className="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">Fee Breakdown</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">費用明細</h3>
         <div className="space-y-2">
           <div className="flex justify-between">
-            <span className="text-gray-600 dark:text-gray-400">Health Check Fee</span>
-            <span className="text-gray-900 dark:text-white">$150</span>
+            <span className="text-gray-600 dark:text-gray-400">健康檢查費</span>
+            <span className="text-gray-900 dark:text-white">NT$ 150</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-gray-600 dark:text-gray-400">Blood Type Testing Fee</span>
-            <span className="text-gray-900 dark:text-white">$80</span>
+            <span className="text-gray-600 dark:text-gray-400">血型檢測費</span>
+            <span className="text-gray-900 dark:text-white">NT$ 80</span>
           </div>
           <div className="border-t border-gray-200 dark:border-gray-700 pt-2 flex justify-between font-bold">
-            <span className="text-gray-900 dark:text-white">Total</span>
-            <span className="text-red-600 dark:text-red-500">$230</span>
+            <span className="text-gray-900 dark:text-white">總計</span>
+            <span className="text-red-600 dark:text-red-500">NT$ 230</span>
           </div>
         </div>
       </div>
@@ -323,15 +323,15 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
             className="mt-1 mr-3"
           />
           <label htmlFor="agreeToTerms" className="text-sm text-gray-700 dark:text-gray-300">
-            I have read and agree to the
+            我已閱讀並同意
             <button className="text-red-600 dark:text-red-500 hover:underline mx-1">
-              Terms of Service
+              服務條款
             </button>
-            and
+            和
             <button className="text-red-600 dark:text-red-500 hover:underline mx-1">
-              Privacy Policy
+              隱私政策
             </button>
-            , and agree to conduct pet health checks and blood type testing.
+            ，並同意進行寵物健康檢查和血型檢測。
           </label>
         </div>
       </div>
@@ -343,9 +343,9 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Pet Registration</h1>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">寵物註冊</h1>
             <p className="text-gray-600 dark:text-gray-400">
-              Create a health profile for your pet and join our blood donation community
+              為您的愛貓建立健康檔案，加入我們的捐血社群
             </p>
           </div>
 
@@ -364,7 +364,7 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
                 disabled={currentStep === 1}
                 className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Previous
+                上一步
               </button>
 
               {currentStep < 4 ? (
@@ -372,7 +372,7 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
                   onClick={handleNextStep}
                   className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg"
                 >
-                  Next
+                  下一步
                 </button>
               ) : (
                 <button
@@ -381,7 +381,7 @@ const PetRegistration: React.FC<PetRegistrationProps> = ({ onNavigate }) => {
                   className="flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white rounded-lg"
                 >
                   <CreditCard size={20} className="mr-2" />
-                  Confirm & Pay
+                  確認並付費
                 </button>
               )}
             </div>

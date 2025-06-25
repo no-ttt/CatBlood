@@ -9,10 +9,10 @@ const Emergency: React.FC = () => {
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/7470785/pexels-photo-7470785.jpeg')] bg-cover bg-center opacity-25"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Emergency Blood Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">緊急用血服務</h1>
             <p className="text-xl mb-8">
-              24/7 emergency blood services for veterinary professionals.
-              Quick response times for critical cases.
+              為獸醫專業人員提供24小時緊急用血服務。
+              針對危急病例提供快速回應時間。
             </p>
           </div>
         </div>
@@ -26,29 +26,29 @@ const Emergency: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">
-              Emergency Protocol
+              緊急處理流程
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  Before Requesting Blood
+                  申請用血前準備
                 </h3>
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400">
-                  <li>• Have patient's blood type information ready</li>
-                  <li>• Prepare current medical records</li>
-                  <li>• Know the quantity needed</li>
-                  <li>• Have your veterinary license number available</li>
+                  <li>• 準備好患者的血型資訊</li>
+                  <li>• 備妥目前的醫療記錄</li>
+                  <li>• 確認所需血液量</li>
+                  <li>• 準備您的獸醫執照號碼</li>
                 </ul>
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-                  What to Expect
+                  服務流程說明
                 </h3>
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400">
-                  <li>• Immediate response to your call</li>
-                  <li>• Blood type verification</li>
-                  <li>• Delivery time estimate</li>
-                  <li>• Follow-up care instructions</li>
+                  <li>• 立即回應您的來電</li>
+                  <li>• 血型相容性驗證</li>
+                  <li>• 配送時間評估</li>
+                  <li>• 後續照護指導</li>
                 </ul>
               </div>
             </div>

@@ -55,8 +55,8 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
   const mockPets = [
     {
       id: '1',
-      name: 'Fluffy',
-      bloodType: 'Type A'
+      name: '小花',
+      bloodType: 'A型'
     }
   ];
 
@@ -64,42 +64,42 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
   const mockDonorLocations: DonorLocation[] = [
     {
       id: '1',
-      petName: 'Snowy',
-      ownerName: 'Mr. Chen',
-      bloodType: 'Type A',
+      petName: '小雪',
+      ownerName: '陳先生',
+      bloodType: 'A型',
       lat: 25.0330,
       lng: 121.5654,
-      address: '123 Main Street, New York, NY 10001',
+      address: '台北市信義區信義路五段7號',
       distance: 2.3
     },
     {
       id: '2',
-      petName: 'Mimi',
-      ownerName: 'Ms. Lin',
-      bloodType: 'Type A',
+      petName: '咪咪',
+      ownerName: '林小姐',
+      bloodType: 'A型',
       lat: 25.0478,
       lng: 121.5318,
-      address: '456 Oak Avenue, Los Angeles, CA 90210',
+      address: '台北市大安區敦化南路二段216號',
       distance: 3.8
     },
     {
       id: '3',
-      petName: 'Shadow',
-      ownerName: 'Mr. Wang',
-      bloodType: 'Type A',
+      petName: '小黑',
+      ownerName: '王先生',
+      bloodType: 'A型',
       lat: 25.0173,
       lng: 121.5397,
-      address: '789 Pine Street, Chicago, IL 60601',
+      address: '台北市中山區南京東路三段219號',
       distance: 1.9
     },
     {
       id: '4',
-      petName: 'Orange',
-      ownerName: 'Ms. Zhang',
-      bloodType: 'Type A',
+      petName: '橘子',
+      ownerName: '張小姐',
+      bloodType: 'A型',
       lat: 25.0418,
       lng: 121.5753,
-      address: '321 Elm Road, Houston, TX 77001',
+      address: '台北市松山區復興北路99號',
       distance: 4.2
     }
   ];
@@ -151,14 +151,14 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
   const renderStep1 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Basic Information</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please fill in the basic information for the blood request</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">基本資訊</h2>
+        <p className="text-gray-600 dark:text-gray-400">請填寫用血申請的基本資訊</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Select Pet *
+            選擇寵物 *
           </label>
           <select
             value={formData.petId}
@@ -166,7 +166,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             required
           >
-            <option value="">Please select your pet</option>
+            <option value="">請選擇您的寵物</option>
             {mockPets.map(pet => (
               <option key={pet.id} value={pet.id}>
                 {pet.name} ({pet.bloodType})
@@ -177,7 +177,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Urgency Level *
+            緊急程度 *
           </label>
           <select
             value={formData.urgency}
@@ -185,16 +185,16 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             required
           >
-            <option value="low">Low - Can schedule</option>
-            <option value="medium">Medium - Needed within a week</option>
-            <option value="high">High - Needed within 24 hours</option>
-            <option value="critical">Critical - Needed immediately</option>
+            <option value="low">低 - 可安排時間</option>
+            <option value="medium">中 - 一週內需要</option>
+            <option value="high">高 - 24小時內需要</option>
+            <option value="critical">危急 - 立即需要</option>
           </select>
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Expected Surgery Date *
+            預計手術日期 *
           </label>
           <input
             type="date"
@@ -207,7 +207,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Expected Surgery Time *
+            預計手術時間 *
           </label>
           <input
             type="time"
@@ -220,7 +220,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Blood Type *
+            血型 *
           </label>
           <select
             value={formData.bloodType}
@@ -228,7 +228,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             required
           >
-            <option value="">Please select blood type</option>
+            <option value="">請選擇血型</option>
             <option value="A型">A型</option>
             <option value="B型">B型</option>
             <option value="AB型">AB型</option>
@@ -237,14 +237,14 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Expected Blood Amount (ml) *
+            預計用血量 (ml) *
           </label>
           <input
             type="number"
             value={formData.bloodAmount}
             onChange={(e) => handleInputChange('bloodAmount', parseInt(e.target.value))}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter the required blood amount"
+            placeholder="請輸入所需血液量"
             min="1"
             required
           />
@@ -256,49 +256,49 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
   const renderStep2 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Hospital Information</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please fill in the hospital information for the surgery</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">醫院資訊</h2>
+        <p className="text-gray-600 dark:text-gray-400">請填寫進行手術的醫院資訊</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="md:col-span-2">
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Hospital Name *
+            醫院名稱 *
           </label>
           <input
             type="text"
             value={formData.hospitalName}
             onChange={(e) => handleInputChange('hospitalName', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter the hospital name"
+            placeholder="請輸入醫院名稱"
             required
           />
         </div>
 
         <div className="md:col-span-2">
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Hospital Address *
+            醫院地址 *
           </label>
           <textarea
             value={formData.hospitalAddress}
             onChange={(e) => handleInputChange('hospitalAddress', e.target.value)}
             rows={3}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter the complete hospital address"
+            placeholder="請輸入完整醫院地址"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Hospital Phone *
+            醫院電話 *
           </label>
           <input
             type="tel"
             value={formData.hospitalPhone}
             onChange={(e) => handleInputChange('hospitalPhone', e.target.value)}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter the hospital contact phone"
+            placeholder="請輸入醫院聯絡電話"
             required
           />
         </div>
@@ -309,37 +309,37 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
   const renderStep3 = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Diagnosis Information</h2>
-        <p className="text-gray-600 dark:text-gray-400">Please provide detailed diagnosis information</p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">診斷資訊</h2>
+        <p className="text-gray-600 dark:text-gray-400">請提供詳細的診斷資訊</p>
       </div>
 
       <div className="space-y-6">
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Diagnosis Description *
+            診斷說明 *
           </label>
           <textarea
             value={formData.diagnosis}
             onChange={(e) => handleInputChange('diagnosis', e.target.value)}
             rows={4}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please describe the pet's condition and the reason for needing blood"
+            placeholder="請描述寵物的病況以及需要用血的原因"
             required
           />
         </div>
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Upload Diagnosis Certificate *
+            上傳診斷證明 *
           </label>
           <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6">
             <div className="text-center">
               <Upload size={48} className="mx-auto text-gray-400 mb-4" />
               <p className="text-gray-600 dark:text-gray-400 mb-2">
-                Click upload or drag and drop files here
+                點擊上傳或拖拽檔案到此處
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Supported formats: PDF, JPG, PNG, file size not exceeding 10MB
+                支援格式：PDF、JPG、PNG，檔案大小不超過10MB
               </p>
               <input
                 type="file"
@@ -352,13 +352,13 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
                 htmlFor="diagnosis-file"
                 className="mt-4 inline-block bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg cursor-pointer"
               >
-                Choose file
+                選擇檔案
               </label>
             </div>
             {formData.diagnosisFile && (
               <div className="mt-4 p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
                 <p className="text-green-800 dark:text-green-400 text-sm">
-                  ✓ Uploaded: {formData.diagnosisFile.name}
+                  ✓ 已上傳：{formData.diagnosisFile.name}
                 </p>
               </div>
             )}
@@ -367,14 +367,14 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
 
         <div>
           <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-            Additional Notes
+            其他備註
           </label>
           <textarea
             value={formData.additionalNotes}
             onChange={(e) => handleInputChange('additionalNotes', e.target.value)}
             rows={3}
             className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-            placeholder="Please enter any additional notes if needed"
+            placeholder="如有其他需要說明的事項請在此輸入"
           />
         </div>
       </div>
@@ -385,7 +385,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
       <div className="flex items-center mb-4">
         <Navigation size={24} className="text-blue-600 dark:text-blue-500 mr-3" />
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white">Nearby Blood Donors</h3>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white">附近的供血貓</h3>
       </div>
       
       {/* Map container */}
@@ -413,9 +413,9 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
                   <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-3 min-w-48 border border-gray-200 dark:border-gray-600">
                     <div className="text-sm">
                       <p className="font-semibold text-gray-900 dark:text-white">{donor.petName}</p>
-                      <p className="text-gray-600 dark:text-gray-400">Owner: {donor.ownerName}</p>
-                      <p className="text-gray-600 dark:text-gray-400">Blood Type: {donor.bloodType}</p>
-                      <p className="text-gray-600 dark:text-gray-400">Distance: {donor.distance}km</p>
+                      <p className="text-gray-600 dark:text-gray-400">飼主：{donor.ownerName}</p>
+                      <p className="text-gray-600 dark:text-gray-400">血型：{donor.bloodType}</p>
+                      <p className="text-gray-600 dark:text-gray-400">距離：{donor.distance}公里</p>
                     </div>
                     {/* Arrow */}
                     <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-white dark:border-t-gray-800"></div>
@@ -435,7 +435,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
             </div>
             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1">
               <div className="bg-blue-600 text-white px-2 py-1 rounded text-xs whitespace-nowrap">
-                Surgery Hospital
+                手術醫院
               </div>
             </div>
           </div>
@@ -458,11 +458,11 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
           <div className="text-sm space-y-2">
             <div className="flex items-center">
               <div className="w-4 h-4 bg-red-600 rounded-full mr-2"></div>
-              <span className="text-gray-700 dark:text-gray-300">Blood Donors</span>
+              <span className="text-gray-700 dark:text-gray-300">供血貓</span>
             </div>
             <div className="flex items-center">
               <div className="w-4 h-4 bg-blue-600 rounded-full mr-2"></div>
-              <span className="text-gray-700 dark:text-gray-300">Surgery Hospital</span>
+              <span className="text-gray-700 dark:text-gray-300">手術醫院</span>
             </div>
           </div>
         </div>
@@ -470,7 +470,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
       
       {/* Donor list */}
       <div className="space-y-3">
-        <h4 className="font-semibold text-gray-900 dark:text-white">Matching Donors for {formData.bloodType}:</h4>
+        <h4 className="font-semibold text-gray-900 dark:text-white">符合 {formData.bloodType} 的供血貓：</h4>
         {mockDonorLocations.map((donor, index) => (
           <div key={donor.id} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
             <div className="flex items-center">
@@ -483,8 +483,8 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
               </div>
             </div>
             <div className="text-right">
-              <p className="text-sm font-medium text-gray-900 dark:text-white">{donor.distance}km</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Distance to Hospital</p>
+              <p className="text-sm font-medium text-gray-900 dark:text-white">{donor.distance}公里</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">距離醫院</p>
             </div>
           </div>
         ))}
@@ -499,9 +499,9 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
           <CheckCircle size={40} className="text-green-600 dark:text-green-400" />
         </div>
         
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Application Submitted</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">申請已提交</h2>
         <p className="text-gray-600 dark:text-gray-400 mb-6">
-          Your blood request application has been successfully submitted. We are looking for suitable blood donors for you.
+          您的用血申請已成功提交，我們正在為您尋找合適的供血貓。
         </p>
       </div>
 
@@ -509,19 +509,19 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
       {renderDonorMap()}
 
       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">What will happen next?</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">接下來會發生什麼？</h3>
         <div className="space-y-3 text-left">
           <div className="flex items-start">
             <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-3 mt-0.5">1</div>
-            <p className="text-gray-600 dark:text-gray-400">System administrator will review your application data</p>
+            <p className="text-gray-600 dark:text-gray-400">系統管理員將審核您的申請資料</p>
           </div>
           <div className="flex items-start">
             <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-3 mt-0.5">2</div>
-            <p className="text-gray-600 dark:text-gray-400">Platform will urgently contact matching blood donors</p>
+            <p className="text-gray-600 dark:text-gray-400">平台將緊急聯絡符合條件的供血貓飼主</p>
           </div>
           <div className="flex items-start">
             <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm mr-3 mt-0.5">3</div>
-            <p className="text-gray-600 dark:text-gray-400">We will contact you and the hospital to arrange follow-up matters</p>
+            <p className="text-gray-600 dark:text-gray-400">我們將聯絡您和醫院安排後續事宜</p>
           </div>
         </div>
       </div>
@@ -530,19 +530,19 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
         <div className="flex items-start">
           <CheckCircle size={24} className="text-green-600 dark:text-green-500 mr-3 mt-1" />
           <div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Administrator has started processing</h3>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">管理員已開始處理</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Our administrator has received your application and is urgently contacting the blood donors on the map above.
-              At the same time, we will contact <strong>{formData.hospitalName}</strong> to coordinate follow-up matters.
+              我們的管理員已收到您的申請，正在緊急聯絡上方地圖中的供血貓飼主。
+              同時我們也會聯絡 <strong>{formData.hospitalName}</strong> 協調後續事宜。
             </p>
           </div>
         </div>
       </div>
 
       <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">Emergency Contact</h3>
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">緊急聯絡</h3>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          If the situation is urgent, please directly call our 24-hour emergency hotline:
+          如果情況緊急，請直接撥打我們的24小時緊急專線：
         </p>
         <div className="flex items-center justify-center">
           <Phone size={20} className="text-red-600 dark:text-red-500 mr-2" />
@@ -555,13 +555,13 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
           onClick={() => onNavigate('member-dashboard')}
           className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg"
         >
-          Return to Member Center
+          返回會員中心
         </button>
         <button
           onClick={() => window.location.reload()}
           className="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
         >
-          Submit New Application
+          提交新申請
         </button>
       </div>
     </div>
@@ -586,10 +586,10 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-4">
               <AlertTriangle size={32} className="text-red-600 dark:text-red-500 mr-3" />
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white">Emergency Blood Request</h1>
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white">緊急用血申請</h1>
             </div>
             <p className="text-gray-600 dark:text-gray-400">
-              Please fill in the following information, we will quickly match you with suitable blood donors
+              請填寫以下資訊，我們將快速為您媒合合適的供血貓
             </p>
           </div>
 
@@ -607,7 +607,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
                 disabled={currentStep === 1}
                 className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Previous Step
+                上一步
               </button>
 
               {currentStep < 3 ? (
@@ -615,7 +615,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
                   onClick={() => setCurrentStep(Math.min(3, currentStep + 1))}
                   className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg"
                 >
-                  Next Step
+                  下一步
                 </button>
               ) : (
                 <button
@@ -623,7 +623,7 @@ const BloodRequest: React.FC<BloodRequestProps> = ({ user, onNavigate }) => {
                   className="flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg"
                 >
                   <AlertTriangle size={20} className="mr-2" />
-                  Submit Emergency Application
+                  提交緊急申請
                 </button>
               )}
             </div>

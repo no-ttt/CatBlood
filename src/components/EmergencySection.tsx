@@ -2,7 +2,11 @@ import React from 'react';
 import { AlertTriangle, Phone, Clock, ArrowRight } from 'lucide-react';
 import { CTAButton } from './Navigation';
 
-const EmergencySection: React.FC = () => {
+interface EmergencySectionProps {
+  onNavigate?: (path: string) => void;
+}
+
+const EmergencySection: React.FC<EmergencySectionProps> = ({ onNavigate }) => {
   return (
     <section className="py-20 bg-gradient-to-r from-red-600/40 to-red-800/40 dark:from-red-700/40 dark:to-red-900/40 text-white" id="emergency">
       <div className="container mx-auto px-4">
@@ -42,68 +46,34 @@ const EmergencySection: React.FC = () => {
           </div>
           
           <div className="md:w-1/2 bg-white/10 backdrop-blur-sm rounded-xl p-6 md:p-8">
-            <h3 className="text-2xl font-bold mb-6">獸醫診所註冊</h3>
+            <h3 className="text-2xl font-bold mb-6">快速註冊</h3>
             
-            <form>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label className="block text-sm font-medium mb-1">診所名稱</label>
-                  <input 
-                    type="text"
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder:text-white/50"
-                    placeholder="請輸入診所名稱"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-1">執照號碼</label>
-                  <input 
-                    type="text"
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder:text-white/50"
-                    placeholder="請輸入執照號碼"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-1">聯絡人</label>
-                  <input 
-                    type="text"
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder:text-white/50"
-                    placeholder="請輸入姓名"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium mb-1">聯絡電話</label>
-                  <input 
-                    type="tel"
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder:text-white/50"
-                    placeholder="請輸入電話號碼"
-                  />
-                </div>
-                
-                <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">電子信箱</label>
-                  <input 
-                    type="email"
-                    className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder:text-white/50"
-                    placeholder="請輸入電子信箱"
-                  />
-                </div>
-              </div>
+            <div className="space-y-4 mb-6">
+              <button
+                onClick={() => onNavigate?.('pet-registration')}
+                className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-lg p-4 text-left transition-all duration-200"
+              >
+                <h4 className="font-semibold text-white mb-2">寵物飼主註冊</h4>
+                <p className="text-white/80 text-sm">註冊您的愛貓，建立健康檔案並加入捐血計畫</p>
+              </button>
               
-              <div>
-                <button type="submit" className="w-full bg-white text-red-600 font-medium py-3 rounded-lg hover:bg-white/90 transition-colors">
-                  註冊診所
-                </button>
-              </div>
-            </form>
+              <button
+                onClick={() => onNavigate?.('vet-registration')}
+                className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 rounded-lg p-4 text-left transition-all duration-200"
+              >
+                <h4 className="font-semibold text-white mb-2">獸醫診所註冊</h4>
+                <p className="text-white/80 text-sm">加入我們的合作夥伴網絡，獲得血液媒合服務</p>
+              </button>
+            </div>
             
             <div className="mt-4 text-center">
-              <a href="/learn-more" className="inline-flex items-center text-white/80 text-sm hover:text-white transition-colors">
+              <button 
+                onClick={() => onNavigate?.('about')}
+                className="inline-flex items-center text-white/80 text-sm hover:text-white transition-colors"
+              >
                 了解更多緊急用血計畫
                 <ArrowRight size={14} className="ml-1" />
-              </a>
+              </button>
             </div>
           </div>
         </div>
