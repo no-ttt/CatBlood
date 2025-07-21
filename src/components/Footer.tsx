@@ -19,7 +19,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="flex items-center mb-4">
               <Droplet size={28} className="text-red-500 mr-2" />
               <span className="text-xl font-bold">
-                Cat<span className="text-red-500">Blood</span>
+                Cat<span className="text-red-500">Health</span>
               </span>
             </div>
             <p className="text-gray-400 mb-6">
@@ -95,7 +95,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <Mail size={20} className="text-red-500 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">info@catblood.org</span>
+                <span className="text-gray-400">info@CatHealth.org</span>
               </li>
               <li className="flex items-start">
                 <Phone size={20} className="text-red-500 mr-3 mt-1 flex-shrink-0" />
@@ -114,7 +114,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         </div>
         
         <div className="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-          <p className="mb-2">© {new Date().getFullYear()} CatBlood 組織。版權所有。</p>
+          <p className="mb-2">© {new Date().getFullYear()} CatHealth 組織。版權所有。</p>
           <div className="flex justify-center space-x-4">
             <a href="#" className="hover:text-red-500 transition-colors">隱私政策</a>
             <a href="#" className="hover:text-red-500 transition-colors">服務條款</a>

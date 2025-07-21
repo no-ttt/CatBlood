@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Heart, FileText, Calendar, Phone, MapPin, AlertTriangle, Download, Eye, CreditCard, Lock, CheckCircle } from 'lucide-react';
+import { User, Heart, FileText, Calendar, Phone, MapPin, AlertTriangle, Download, Eye, CreditCard, Lock, CheckCircle, Plus, X, Search } from 'lucide-react';
 import { User as UserType, Pet, HealthReport, DNAReport } from '../App';
 
 interface MemberDashboardProps {
@@ -13,9 +13,19 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
   const [showPaymentProcess, setShowPaymentProcess] = useState(false);
   const [paymentStep, setPaymentStep] = useState(1);
   const [isPaid, setIsPaid] = useState(user.isPaid || false);
+  const [showPetForm, setShowPetForm] = useState(false);
+  const [petFormData, setPetFormData] = useState({
+    name: '',
+    birthday: '',
+    chipNumber: '',
+    bloodType: '',
+    breed: '',
+    weight: '',
+    gender: ''
+  });
 
   // Mock pet data
-  const mockPets: Pet[] = [
+  const [mockPets, setMockPets] = useState<Pet[]>([
     {
       id: '1',
       name: '小花',
@@ -29,8 +39,22 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
       breed: '美國短毛貓',
       weight: 4.5,
       gender: '母'
+    },
+    {
+      id: '2',
+      name: '小白',
+      birthday: '2021-06-20',
+      chipNumber: '900123456789013',
+      bloodType: 'B型',
+      healthStatus: '健康',
+      lastCheckup: '2024-02-01',
+      isDonor: false,
+      ownerId: user.id,
+      breed: '英國短毛貓',
+      weight: 3.8,
+      gender: '公'
     }
-  ];
+  ]);
 
   // Mock health reports
   const mockHealthReports: HealthReport[] = [
@@ -44,11 +68,19 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
     },
     {
       id: '2',
-      petId: '1',
+      petId: '2',
       date: '2023-12-10',
       type: '健康檢查',
       status: '正常',
       details: '整體健康狀況良好，疫苗接種完整'
+    },
+    {
+      id: '3',
+      petId: '1',
+      date: '2024-01-20',
+      type: 'DNA檢測',
+      status: '正常',
+      details: '基因檢測完成，無遺傳疾病風險'
     }
   ];
 
@@ -61,6 +93,14 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
       bloodType: 'A型',
       geneticMarkers: ['FeLV陰性', 'FIV陰性', '遺傳性心肌病低風險'],
       healthRisks: ['腎臟疾病中等風險', '糖尿病低風險']
+    },
+    {
+      id: '2',
+      petId: '2',
+      date: '2024-02-01',
+      bloodType: 'B型',
+      geneticMarkers: ['FeLV陰性', 'FIV陰性', '遺傳性心肌病低風險'],
+      healthRisks: ['心臟疾病低風險', '腎臟疾病低風險']
     }
   ];
 
@@ -72,6 +112,194 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
     alert('付費成功！您現在可以查看DNA報告。');
   };
 
+  const handlePetFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newPet: Pet = {
+      id: (mockPets.length + 1).toString(),
+      name: petFormData.name,
+      birthday: petFormData.birthday,
+      chipNumber: petFormData.chipNumber,
+      bloodType: petFormData.bloodType,
+      healthStatus: '健康',
+      lastCheckup: new Date().toISOString().split('T')[0],
+      isDonor: false,
+      ownerId: user.id,
+      breed: petFormData.breed,
+      weight: parseFloat(petFormData.weight),
+      gender: petFormData.gender
+    };
+    
+    setMockPets([...mockPets, newPet]);
+    setShowPetForm(false);
+    setPetFormData({
+      name: '',
+      birthday: '',
+      chipNumber: '',
+      bloodType: '',
+      breed: '',
+      weight: '',
+      gender: ''
+    });
+    alert('貓咪資料新增成功！');
+  };
+
+  const PetForm = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">新增貓咪資料</h3>
+          <button
+            onClick={() => setShowPetForm(false)}
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          >
+            <X size={24} />
+          </button>
+        </div>
+        
+        <form onSubmit={handlePetFormSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                貓咪姓名 *
+              </label>
+              <input
+                type="text"
+                value={petFormData.name}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, name: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                placeholder="請輸入貓咪姓名"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                出生日期 *
+              </label>
+              <input
+                type="date"
+                value={petFormData.birthday}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, birthday: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                晶片號碼 *
+              </label>
+              <input
+                type="text"
+                value={petFormData.chipNumber}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, chipNumber: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                placeholder="請輸入15位數晶片號碼"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                血型 *
+              </label>
+              <select
+                value={petFormData.bloodType}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, bloodType: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                required
+              >
+                <option value="">請選擇血型</option>
+                <option value="A型">A型</option>
+                <option value="B型">B型</option>
+                <option value="AB型">AB型</option>
+              </select>
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                品種 *
+              </label>
+              <input
+                type="text"
+                value={petFormData.breed}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, breed: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                placeholder="請輸入貓咪品種"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                體重 (kg) *
+              </label>
+              <input
+                type="number"
+                step="0.1"
+                value={petFormData.weight}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, weight: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                placeholder="請輸入體重"
+                required
+              />
+            </div>
+            
+            <div>
+              <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
+                性別 *
+              </label>
+              <select
+                value={petFormData.gender}
+                onChange={(e) => setPetFormData(prev => ({ ...prev, gender: e.target.value }))}
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                required
+              >
+                <option value="">請選擇性別</option>
+                <option value="公">公</option>
+                <option value="母">母</option>
+              </select>
+            </div>
+          </div>
+          
+          <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">費用說明</h4>
+            <div className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
+              <div className="flex justify-between">
+                <span>健康檢查費</span>
+                <span>NT$ 150</span>
+              </div>
+              <div className="flex justify-between">
+                <span>血型檢測費</span>
+                <span>NT$ 80</span>
+              </div>
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-1 flex justify-between font-bold">
+                <span>總計</span>
+                <span className="text-red-600 dark:text-red-500">NT$ 230</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex space-x-4 pt-4">
+            <button
+              type="button"
+              onClick={() => setShowPetForm(false)}
+              className="flex-1 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+            >
+              取消
+            </button>
+            <button
+              type="submit"
+              className="flex-1 bg-red-600 hover:bg-red-700 text-white px-4 py-3 rounded-lg flex items-center justify-center"
+            >
+              <CreditCard size={16} className="mr-2" />
+              確認並付費
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
   const renderOverview = () => (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -107,7 +335,16 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
       </div>
 
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">我的寵物</h3>
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white">我的寵物</h3>
+          <button 
+            onClick={() => setShowPetForm(true)}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg flex items-center"
+          >
+            <Plus size={20} className="mr-2" />
+            新增貓咪
+          </button>
+        </div>
         <div className="space-y-4">
           {mockPets.map(pet => (
             <div key={pet.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
@@ -145,13 +382,15 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
   const renderReports = () => (
     <div className="space-y-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">健康報告</h3>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">健康報告 - 所有貓咪</h3>
         <div className="space-y-4">
           {mockHealthReports.map(report => (
             <div key={report.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{report.type}</h4>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {mockPets.find(pet => pet.id === report.petId)?.name} - {report.type}
+                  </h4>
                   <p className="text-gray-600 dark:text-gray-400">檢查日期：{report.date}</p>
                   <p className="text-gray-600 dark:text-gray-400">{report.details}</p>
                   <span className={`inline-block px-2 py-1 rounded text-sm mt-2 ${
@@ -195,13 +434,15 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
     <div className="space-y-6">
       {isPaid ? (
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">DNA報告</h3>
+          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">DNA報告 - 所有貓咪</h3>
           <div className="space-y-4">
             {mockDNAReports.map(report => (
               <div key={report.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">基因檢測報告</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {mockPets.find(pet => pet.id === report.petId)?.name} - 基因檢測報告
+                    </h4>
                     <p className="text-gray-600 dark:text-gray-400">檢測日期：{report.date}</p>
                     <div className="mt-3 space-y-2">
                       <div>
@@ -279,7 +520,82 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
 
   const renderBloodRequest = () => (
     <div className="space-y-6">
-      <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-6">
+      {/* Payment restriction for vets */}
+      {user.type === 'vet' && !isPaid && (
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6">
+          <div className="flex items-start">
+            <Lock size={24} className="text-yellow-600 dark:text-yellow-500 mr-3 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">用血申請功能需要付費</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                升級為付費會員即可使用用血申請功能，包含據點查詢和緊急申請服務。
+              </p>
+              <button 
+                onClick={() => setShowPaymentModal(true)}
+                className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium"
+              >
+                立即升級付費會員
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Search and Map Section */}
+      <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 ${user.type === 'vet' && !isPaid ? 'opacity-50 pointer-events-none' : ''}`}>
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">查詢捐血據點</h3>
+        
+        {/* Search Box */}
+        <div className="mb-6">
+          <div className="relative">
+            <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="搜尋城市或據點名稱..."
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+        </div>
+        
+        {/* Map */}
+        <div className="relative h-64 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden mb-4">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-green-100 dark:from-blue-900/30 dark:to-green-900/30">
+            {/* Mock map markers */}
+            <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-red-600 rounded-full animate-pulse"></div>
+            <div className="absolute top-1/3 right-1/3 w-4 h-4 bg-red-600 rounded-full animate-pulse"></div>
+            <div className="absolute bottom-1/3 left-1/2 w-4 h-4 bg-red-600 rounded-full animate-pulse"></div>
+          </div>
+          
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow">
+              互動式地圖 - 顯示附近捐血據點
+            </p>
+          </div>
+        </div>
+        
+        {/* Location List */}
+        <div className="space-y-3">
+          <h4 className="font-semibold text-gray-900 dark:text-white">附近據點：</h4>
+          {[
+            { name: '台北中央動物醫院', address: '台北市信義區信義路五段7號', distance: '2.3km' },
+            { name: '新北愛心動物診所', address: '新北市板橋區中山路一段161號', distance: '5.1km' },
+            { name: '桃園北區寵物醫療中心', address: '桃園市桃園區復興路195號', distance: '8.7km' }
+          ].map((location, index) => (
+            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+              <div>
+                <p className="font-medium text-gray-900 dark:text-white">{location.name}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{location.address}</p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-medium text-gray-900 dark:text-white">{location.distance}</p>
+                <button className="text-xs text-red-600 dark:text-red-500 hover:underline">查看詳情</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className={`bg-red-50 dark:bg-red-900/20 rounded-lg p-6 ${user.type === 'vet' && !isPaid ? 'opacity-50 pointer-events-none' : ''}`}>
         <div className="flex items-start">
           <AlertTriangle size={24} className="text-red-600 dark:text-red-500 mr-3 mt-1" />
           <div>
@@ -289,18 +605,12 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
             </p>
             <button 
               onClick={() => onNavigate('blood-request')}
+              disabled={user.type === 'vet' && !isPaid}
               className="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg font-medium"
             >
               申請緊急用血
             </button>
           </div>
-        </div>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">用血申請記錄</h3>
-        <div className="text-center py-8">
-          <p className="text-gray-500 dark:text-gray-400">目前沒有用血申請記錄</p>
         </div>
       </div>
     </div>
@@ -658,6 +968,7 @@ const MemberDashboard: React.FC<MemberDashboardProps> = ({ user, onNavigate }) =
 
       {showPaymentModal && <PaymentModal />}
       {showPaymentProcess && <PaymentProcessModal />}
+      {showPetForm && <PetForm />}
     </main>
   );
 };

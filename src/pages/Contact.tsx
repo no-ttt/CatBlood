@@ -24,8 +24,8 @@ const Contact: React.FC = () => {
                   <Mail className="w-6 h-6 text-red-600 dark:text-red-500 mr-3" />
                   <h2 className="text-xl font-bold text-gray-900 dark:text-white">電子信箱</h2>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-2">info@catblood.org</p>
-                <p className="text-gray-600 dark:text-gray-400">emergency@catblood.org</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-2">info@CatHealth.org</p>
+                <p className="text-gray-600 dark:text-gray-400">emergency@CatHealth.org</p>
               </div>
 
               <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">

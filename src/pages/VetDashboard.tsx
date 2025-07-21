@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Building2, Search, MapPin, Phone, Filter, Users, Plus, CreditCard, AlertTriangle, FileText, X, CheckCircle } from 'lucide-react';
+import { Building2, Search, MapPin, Phone, Filter, Users, Plus, CreditCard, AlertTriangle, FileText, X, CheckCircle, Lock } from 'lucide-react';
 import { User as UserType, Pet, HealthReport } from '../App';
 
 interface VetDashboardProps {
@@ -29,7 +29,7 @@ const VetDashboard: React.FC<VetDashboardProps> = ({ user, onNavigate }) => {
   const [showCatForm, setShowCatForm] = useState(false);
   const [showPaymentProcess, setShowPaymentProcess] = useState(false);
   const [paymentStep, setPaymentStep] = useState(1);
-  const [isPaid, setIsPaid] = useState(user.isPaid || false);
+  const [isPaid, setIsPaid] = useState(false); // 預設動物醫院沒有付費
   const [catFormData, setCatFormData] = useState({
     name: '',
     birthday: '',
@@ -462,9 +462,79 @@ const VetDashboard: React.FC<VetDashboardProps> = ({ user, onNavigate }) => {
 
   const renderSearch = () => (
     <div className="space-y-6">
+      {!isPaid && (
+        <div className="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-6">
+          <div className="flex items-start">
+            <Lock size={24} className="text-yellow-600 dark:text-yellow-500 mr-3 mt-1" />
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">查詢功能需要付費</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                升級為付費會員即可查詢供血貓資訊並使用緊急媒合功能。
+              </p>
+              <button 
+                onClick={() => setShowPaymentModal(true)}
+                className="bg-yellow-600 hover:bg-yellow-700 text-white px-6 py-3 rounded-lg font-medium"
+              >
+                立即升級付費會員
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Search Filters */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 ${!isPaid ? 'opacity-50 pointer-events-none' : ''}`}>
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">查詢供血貓</h3>
+        
+        {/* Search Box */}
+        <div className="mb-6">
+          <div className="relative">
+            <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="搜尋供血貓名稱或飼主..."
+              className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+            />
+          </div>
+        </div>
+        
+        {/* Map */}
+        <div className="relative h-64 bg-gray-100 dark:bg-gray-700 rounded-lg overflow-hidden mb-6">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-green-100 dark:from-blue-900/30 dark:to-green-900/30">
+            {/* Mock map markers for donors */}
+            {filteredDonors.slice(0, 3).map((donor, index) => (
+              <div
+                key={donor.id}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group"
+                style={{
+                  left: `${25 + index * 20}%`,
+                  top: `${30 + index * 15}%`
+                }}
+              >
+                <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg animate-pulse">
+                  {index + 1}
+                </div>
+                
+                {/* Hover info */}
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-3 min-w-32 border border-gray-200 dark:border-gray-600">
+                    <div className="text-xs">
+                      <p className="font-semibold text-gray-900 dark:text-white">{donor.petName}</p>
+                      <p className="text-gray-600 dark:text-gray-400">{donor.bloodType}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow">
+              供血貓分布地圖
+            </p>
+          </div>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
@@ -526,13 +596,14 @@ const VetDashboard: React.FC<VetDashboardProps> = ({ user, onNavigate }) => {
       </div>
 
       {/* Search Results */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 ${!isPaid ? 'opacity-50 pointer-events-none' : ''}`}>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">搜尋結果</h3>
           <div className="flex items-center space-x-4">
             <span className="text-gray-600 dark:text-gray-400">找到 {filteredDonors.length} 隻供血貓</span>
             <button 
               onClick={handleEmergencyMatch}
+              disabled={!isPaid}
               className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg flex items-center"
             >
               <AlertTriangle size={16} className="mr-2" />

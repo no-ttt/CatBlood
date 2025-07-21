@@ -104,7 +104,7 @@ const LocationMap: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-4">
             <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">捐血中心</h3>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">合作的動物院所</h3>
               
               <div className="space-y-3">
                 {filteredLocations.map(location => (

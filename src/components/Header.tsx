@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = ({
           >
             <Droplet size={32} className="text-red-600 dark:text-red-500 mr-2" />
             <span className="text-2xl font-bold text-gray-900 dark:text-white">
-            Cat<span className="text-red-600 dark:text-red-500">Blood</span>
+            Cat<span className="text-red-600 dark:text-red-500">Health</span>
             </span>
           </div>
 
